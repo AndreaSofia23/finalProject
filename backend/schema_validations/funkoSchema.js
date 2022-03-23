@@ -39,13 +39,13 @@ const funkoSchema = Joi.object(
         'number.max': 'El precio debe tener como maximo 30 digitos',
       }
     ),
-      collection: Joi.string().min(5).max(30).required().message(
+      franchise: Joi.string().min(5).max(30).required().message(
       {
-        'string.base': 'La colección tiene que ser un String',
-        'string.empty': 'La colección  no puede estar vacía',
-        'any.required': 'La colección  es un campo requerido',
-        'string.min': 'La colección  debe tener como minimo 5 carácteres',
-        'string.max': 'La colección  debe tener como maximo 30 caracteres',
+        'string.base': 'La franquicia tiene que ser un String',
+        'string.empty': 'La franquicia  no puede estar vacía',
+        'any.required': 'La franquicia   es un campo requerido',
+        'string.min': 'La franquicia   debe tener como minimo 5 carácteres',
+        'string.max': 'La franquicia   debe tener como maximo 30 caracteres',
       }
       ),
   }
