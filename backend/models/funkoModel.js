@@ -6,7 +6,7 @@ const funkoModel = new mongoose.Schema(
       category: {type: String},
       ilimited: {type: Boolean},
       price: {type: Number},
-      collection: {type: String},
+      franchise: {type: String},
     },
 );
 module.exports = mongoose.model('Funko', funkoModel);
