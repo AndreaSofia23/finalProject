@@ -10,7 +10,7 @@ const userRouter= (User) => {
   // eslint-disable-next-line new-cap
   const userRouter = express.Router();
 
-  const {getUsers, postUsers, updateUser, deleteUserById, getUserById} = usersController(User);
+  const {getUsers, postUsers, updateUser, deleteUserById, getUserById, postLogIn} = usersController(User);
 
   userRouter
       .route('/users')
@@ -22,6 +22,10 @@ const userRouter= (User) => {
       .put(validator.body(userSchema),updateUser)
       .delete(deleteUserById)
       .get(getUserById);
+
+  userRouter
+      .route('/users/logIn')
+      .post(postLogIn);
 
   return userRouter;
 };

@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Modal, Button} from 'antd';
 import './Login.css';
+import FormLogin from '../FormLogin/FormLogin';
 
 const Login = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -27,10 +28,7 @@ const Login = () => {
         visible={isModalVisible}
         onOk={handleOk}
         onCancel={handleCancel}>
-
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+        <FormLogin/>
       </Modal>
     </div>
   );
