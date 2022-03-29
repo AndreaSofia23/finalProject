@@ -3,8 +3,11 @@ import {Modal, Button} from 'antd';
 import './Login.css';
 import FormLogin from '../FormLogin/FormLogin';
 
-const Login = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
+const Login = (props) => {
+  
+
+ const [isModalVisible, setIsModalVisible] = useState(false);
+ 
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -18,20 +21,35 @@ const Login = () => {
     setIsModalVisible(false);
   };
 
-  return (
-    <div className='loginModal'>
+  if (props.sesionState) {
+     return(<Button onClick={props.booleanLoginHandler}>Logout</Button>)
+  }
+
+  else{
+    return (
+    <>
       <Button type="primary" onClick={showModal}>
-        Login
+       Login
       </Button>
       <Modal
-        title="Login"
         visible={isModalVisible}
+        title="Login"
         onOk={handleOk}
-        onCancel={handleCancel}>
-        <FormLogin/>
+        onCancel={handleCancel}
+        footer={[
+          <Button key="back" onClick={handleCancel}>
+            Return
+          </Button>,
+        ]}
+      >
+        <FormLogin sesionState={props.sesionState} booleanLoginHandler={props.booleanLoginHandler}/>
       </Modal>
-    </div>
-  );
-};
+    </>
+    );
+  }
+    
+  
+}
+
 
 export default Login;
