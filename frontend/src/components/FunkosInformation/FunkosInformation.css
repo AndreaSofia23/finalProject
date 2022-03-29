@@ -1,0 +1,23 @@
+.descriptiveText{
+max-width: 45%;
+}
+.descriptiveImages{
+  margin-left: 2%;
+  max-width: 50%;
+}
+.funkosInformation{
+  display: flex;
+}
+.titleFunkosInformationBox{
+  display: flex;
+}
+.titleFunkosInformation{
+  max-width: 50%;
+  font-weight: bolder;
+  font-size: x-large;
+}
+#logoPop{
+  margin-left: 7%;
+  max-width: 6%;
+  max-height: 6%;
+}
