@@ -5,6 +5,7 @@ import 'antd/dist/antd.css';
 import LayoutHome from './components/LayoutHome/LayoutHome';
 import {Routes, Route} from 'react-router-dom'
 import Users from './components/Users/Users';
+import FunkosPage from './components/FunkosPage/FunkosPage';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
       <Routes>
         <Route path={'/'} element={<LayoutHome/>}/>
         <Route path={'/users'} element={<Users/>}/>
+        <Route path='/funkos' element={<FunkosPage/>}/>
       </Routes>
     </div>
   );
