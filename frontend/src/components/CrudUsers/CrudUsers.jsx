@@ -1,53 +1,30 @@
+import './CrudUsers.css';
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'antd';
-import UserForm from '../UserForm/UserForm';
+import CrudUsersForm from '../CrudUsersForm/CrudUsersForm';
 import UserEditorForm from '../UserEditorForm/UserEditorForm';
-import ListUsers from '../ListUsers/ListUsers';
-import UserReader from '../UserReader/UserReader';
-import './Users.css';
+import CrudUsersTable from '../CrudUsersTable/CrudUsersTable';
+import CrudUsersVisor from '../CrudUsersVisor/CrudUsersVisor';
+import { CrudUsersHandlers } from '../../handlers/CrudUsersHandlers';
 
 const Users = () => {
+  const {
+    isCreatorVisible,
+    isEditorVisible,
+    isLectorVisible,
+    showEditor,
+    handleOkOfEditor,
+    handleCancelOfEditor,
+    showCreator,
+    handleOkOfCreator,
+    handleCancelOfCreator,
+    showLector,
+    handleOkOfLector,
+    handleCancelOfLector,
+  } = CrudUsersHandlers();
+
   const [user, setUser] = useState([]);
-  const [isCreatorVisible, setIsCreatorVisible] = useState(false);
-  const [isEditorVisible, setIsEditorVisible] = useState(false);
-  const [isLectorVisible, setIsLectorVisible] = useState(false);
-
-  const showEditor = () => {
-    setIsEditorVisible(true);
-  };
-
-  const handleOkOfEditor = () => {
-    setIsEditorVisible(false);
-  };
-
-  const handleCancelOfEditor = () => {
-    setIsEditorVisible(false);
-  };
-
-  const showCreator = () => {
-    setIsCreatorVisible(true);
-  };
-
-  const handleOkOfCreator = () => {
-    setIsCreatorVisible(false);
-  };
-
-  const handleCancelOfCreator = () => {
-    setIsCreatorVisible(false);
-  };
-
-  const showLector = () => {
-    setIsLectorVisible(true);
-  };
-
-  const handleOkOfLector = () => {
-    setIsLectorVisible(false);
-  };
-
-  const handleCancelOfLector = () => {
-    setIsLectorVisible(false);
-  };
 
   const createUser = async (values) => {
     console.log(values);
@@ -105,7 +82,7 @@ const Users = () => {
         onOk={handleOkOfCreator}
         onCancel={handleCancelOfCreator}
       >
-        <UserForm createUser={createUser} />
+        <CrudUsersForm createUser={createUser} />
       </Modal>
       <Modal
         title="Basic Modal"
@@ -121,9 +98,9 @@ const Users = () => {
         onOk={handleOkOfLector}
         onCancel={handleCancelOfLector}
       >
-        <UserReader user={user} />
+        <CrudUsersVisor user={user} />
       </Modal>
-      <ListUsers
+      <CrudUsersTable
         onEditStudent={onEditStudent}
         onDeleteUsers={onDeleteUsers}
         viewUser={viewUser}

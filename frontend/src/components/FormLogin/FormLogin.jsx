@@ -1,55 +1,43 @@
-import React, { useState } from 'react'
-import axios from 'axios'
+import React, { useState } from 'react';
+import axios from 'axios';
 import { Form, Input, Button } from 'antd';
 import LoginResult from '../LoginResult/LoginResult';
-import LoginResultInvalid from '../LoginResultInvalid/LoginResultInvalid'
+import LoginResultInvalid from '../LoginResultInvalid/LoginResultInvalid';
 
-const FormLogin = (props) => {
+const FormLogin = () => {
+  const [stateOfLogin, setStateOfLogin] = useState(null);
 
-  const [stateOfLogin, setStateOfLogin]= useState(0);
-
-  const successfulLogin = () => { setStateOfLogin(1) };
-  const failedLogin = () => { setStateOfLogin(2) };
-  const restartLogin = () =>{ setStateOfLogin(0) };
+  const restartLogin = () => {
+    setStateOfLogin(null);
+  };
 
   const onFinish = (values) => {
     console.log('Success:', values);
-    axios.post('http://localhost:8080/api/users/logIn', values)
+    axios
+      .post('http://localhost:8080/api/users/logIn', values)
 
-    .then(function (response) {
-      console.log(values)
-      console.log(response)
-      console.log(response.data.mensaje);
-      if(response.data.mensaje === "Autenticación correcta"){
-        successfulLogin();
-        
-      
-      }
-      if(response.data.mensaje === "Credenciales Invalidas"){
-        
-        
-        failedLogin();
-      
-      }
-      
-      
-    })
-    .catch(function (error) {
-      console.log("error");
-      console.log(error);
-    });
-
+      .then(function (response) {
+        console.log(values);
+        console.log(response);
+        console.log(response.data.mensaje);
+        if (response.data.mensaje === 'Autenticación correcta') {
+          setStateOfLogin('success');
+        }
+        if (response.data.mensaje === 'Credenciales Invalidas') {
+          setStateOfLogin('failed');
+        }
+      })
+      .catch(function (error) {
+        console.log('error');
+        console.log(error);
+      });
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
 
-  
-
-
-
-  if (stateOfLogin===0){
+  if (stateOfLogin === null) {
     return (
       <Form
         name="basic"
@@ -76,7 +64,7 @@ const FormLogin = (props) => {
         >
           <Input />
         </Form.Item>
-  
+
         <Form.Item
           label="Password"
           name="password"
@@ -89,7 +77,7 @@ const FormLogin = (props) => {
         >
           <Input.Password />
         </Form.Item>
-  
+
         <Form.Item
           wrapperCol={{
             offset: 8,
@@ -101,18 +89,14 @@ const FormLogin = (props) => {
           </Button>
         </Form.Item>
       </Form>
-      
     );
   }
-  if(stateOfLogin === 1 ){
-    return(<LoginResult booleanLoginHandler = {props.booleanLoginHandler}/>)
+  if (stateOfLogin === 'success') {
+    return <LoginResult />;
   }
-  if(stateOfLogin === 2 ){
-    return(<LoginResultInvalid  restartLogin = {restartLogin}/>)
+  if (stateOfLogin === 'failed') {
+    return <LoginResultInvalid restartLogin={restartLogin} />;
   }
 };
-
-
-
 
 export default FormLogin;
