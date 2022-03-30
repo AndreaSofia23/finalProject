@@ -1,13 +1,14 @@
-import React, {useState} from 'react';
-import {Modal, Button} from 'antd';
+import React, { useState } from 'react';
+import { Modal, Button } from 'antd';
 import './Login.css';
 import FormLogin from '../FormLogin/FormLogin';
+import LoginContext from '../../context/LoginContext';
+import { useContext } from 'react';
 
 const Login = (props) => {
-  
+  const { isLoggedIn, handleLogin } = useContext(LoginContext);
 
- const [isModalVisible, setIsModalVisible] = useState(false);
- 
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const showModal = () => {
     setIsModalVisible(true);
@@ -21,35 +22,30 @@ const Login = (props) => {
     setIsModalVisible(false);
   };
 
-  if (props.sesionState) {
-     return(<Button onClick={props.booleanLoginHandler}>Logout</Button>)
-  }
-
-  else{
+  if (isLoggedIn) {
+    return <Button onClick={handleLogin}>Logout</Button>;
+  } else {
     return (
-    <>
-      <Button type="primary" onClick={showModal}>
-       Login
-      </Button>
-      <Modal
-        visible={isModalVisible}
-        title="Login"
-        onOk={handleOk}
-        onCancel={handleCancel}
-        footer={[
-          <Button key="back" onClick={handleCancel}>
-            Return
-          </Button>,
-        ]}
-      >
-        <FormLogin sesionState={props.sesionState} booleanLoginHandler={props.booleanLoginHandler}/>
-      </Modal>
-    </>
+      <>
+        <Button type="primary" onClick={showModal}>
+          Login
+        </Button>
+        <Modal
+          visible={isModalVisible}
+          title="Login"
+          onOk={handleOk}
+          onCancel={handleCancel}
+          footer={[
+            <Button key="back" onClick={handleCancel}>
+              Return
+            </Button>,
+          ]}
+        >
+          <FormLogin />
+        </Modal>
+      </>
     );
   }
-    
-  
-}
-
+};
 
 export default Login;
