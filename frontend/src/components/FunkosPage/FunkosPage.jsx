@@ -6,8 +6,6 @@ import { Button,Modal,Form,Input,Select} from 'antd';
 const FunkosPage = () => {
   const [funko,setFunko] = useState([])
   
-  const [form] = Form.useForm();
-
   const getFunkosBackend = async() => {
     const resp = await axios.get(`http://localhost:8080/api/funkos`);
     const funkos = resp.data.map((funko)=>{
@@ -18,7 +16,7 @@ const FunkosPage = () => {
 
 useEffect(() => {
   getFunkosBackend()
-},[])
+},[funko])
 
   const addNewFunko = (funkoData) => {
     setFunko([...funko,funkoData])
@@ -49,19 +47,15 @@ useEffect(() => {
       
     };
 
-    const onReset = () => {
-      form.resetFields();
-    }
 
-    const onFill = () => {
-      form.setFieldsValue({
-      });
-    };
+   
   
   return(
-    <div className='cointainerFunkos' >
+    <>
+    <Button type='primary' style={{background: '#22563e',borderColor: '#a7ddc6'}} onClick={()=>showModal()} >Agregar nuevo Funko</Button>
+
+    <div className='cointainerFunkos' style={{justifyContent:'center'}} >
       
-      <Button type='primary' style={{background: '#22563e',borderColor: '#a7ddc6'}} onClick={()=>showModal()}>Agregar nuevo Funko</Button>
       <FunkoList data={funko} />
       <Modal title="Agregar nuevo Funko" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} >
         <Form
@@ -74,7 +68,7 @@ useEffect(() => {
 
             <Form.Item 
               label="Nombre"
-              name={['funko', 'name']}
+              name= {['funko', 'name']}
               rules={[
                 {
                   required: true,
@@ -116,6 +110,16 @@ useEffect(() => {
               <Input placeholder='Ingrese el precio '/>
               </Form.Item>
               <Form.Item 
+              label="Imagen"
+              name={['funko', 'image']}
+              rules={[
+                {
+                  required: true,
+                },
+              ]}>
+              <Input placeholder='Ingrese la url de la imagen' />
+              </Form.Item>
+              <Form.Item 
               label="Franquicia"
               name={['funko', 'franchise']}
               rules={[
@@ -142,7 +146,7 @@ useEffect(() => {
                 }} 
                 type="link" 
                 htmlType="button" 
-                onClick={onFill}
+                
               >
                 Limpiar Formulario
               </Button>
@@ -151,6 +155,7 @@ useEffect(() => {
       </Modal>
 
     </div>
+    </>
   )
 }
 

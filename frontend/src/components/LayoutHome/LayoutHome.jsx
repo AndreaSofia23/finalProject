@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import { Layout } from 'antd';
-import React from 'react';
+import React, { useEffect } from 'react';
 import './LayoutHome.css';
 import logo from '../../images/funkoLogo.png';
 import Login from '../Login/Login';
@@ -8,10 +8,15 @@ import FooterContact from '../FooterContact/FooterContact';
 import FunkosInformation from '../FunkosInformation/FunkosInformation';
 import { IsLoggedInProvider } from '../../context/LoginContext';
 import {ArrowLeftOutlined} from '@ant-design/icons'
-
+import LoginContext from '../../context/LoginContext';
+import { useContext } from 'react';
 const { Header, Content, Footer } = Layout;
 
 const LayoutHome = () => {
+  const { user } = useContext(LoginContext);
+  useEffect(()=>{
+
+  },[user])
   return (
     <IsLoggedInProvider>
       <Layout>
@@ -59,7 +64,7 @@ const LayoutHome = () => {
               minHeight: 450,
             }}
           >
-            <FunkosInformation />
+            <FunkosInformation  />
           </div>
         </Content>
         <Footer

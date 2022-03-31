@@ -16,6 +16,7 @@ const LoginResult = (props) => {
             borderColor: '#a7ddc6',
           }}
           onClick={() => {
+            window.location.reload(true);
             setIsLoggedIn(true);
           }}
           type="primary"

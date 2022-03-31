@@ -8,11 +8,21 @@ const FunkoList = (props) => {
   
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [funkoToEdit,setFunkoToEdit] = useState({})
+  const {Meta} = Card;
 
+  
+  const styleContainer = {
+  
+    display: 'grid',
+    gridTemplateRows: '1fr 1fr ',
+    gridTemplateColumns: '1fr 1fr 1fr',
+    backgroundColor:'#ffffff33',
+    
+
+  }
   const showModalEdit = (funko) => {
    setFunkoToEdit(funko);
-   console.log(funko);
-    setIsModalVisible(true);
+   setIsModalVisible(true);
   
   }
 
@@ -55,11 +65,12 @@ const FunkoList = (props) => {
   return (
     
     <>
-      <div className='cointainer-funkos-list' style={{}}>
+      <div className='cointainer-funkos-list' style={styleContainer} >
+        
         {props.data.map(funko => 
         <div className="site-card-wrapper"  >
-          <Row gutter={16} >
-            <Col span={8}>
+          <Row gutter={[16,16]} >
+            <Col span={8} >
               <Card
                 actions={[
                   <EditOutlined style={{color:'#819f5f'}} onClick={ () => showModalEdit(funko)}  />,
@@ -67,20 +78,23 @@ const FunkoList = (props) => {
                   
                 ]}
                 hoverable
-                title={funko.name}
-                style={{width: '40%',
+                title={funko.category}
+                style={{width: '250px',
+                        height:'400px',
                         textAlign: 'center',
-                        fontSize:'small',
+                        fontSize:'medium',
+                        margin:'1em',
+                        justifySelf:'center'
                         }}
-                cover={<img alt='funko images' src={funko.image}/>}
-                extra={funko.category}
+                cover={<img alt='funko images' src={funko.image} style={{height:'100%'}}/>}
                 size='small'
                 >
-                  
+                  <Meta title={funko.name} description={ funko.price} />
                 </Card>
                 
           </Col>
           </Row>
+          
           <Modal title="Editar datos del Funko" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} okText='Listo' cancelText='Cancelar' okType='submit' >
               <Form
                 labelCol={{ span: 4 }}
@@ -138,6 +152,17 @@ const FunkoList = (props) => {
                     <Input placeholder='Ingrese el precio '/>
                     </Form.Item>
                     <Form.Item 
+                    label="Imagen"
+                    name='image'
+                    rules={[
+                      {
+                        required: true,
+                        message:'Por favor ingrese la url de la imagen'
+                      },
+                    ]}>
+                    <Input placeholder='Ingrese la url de la imagen' />
+                    </Form.Item>
+                    <Form.Item 
                     label="Franquicia"
                     name='franchise'
                     rules={[
@@ -158,7 +183,9 @@ const FunkoList = (props) => {
       </Modal>
           </div>)
           }
+        
       </div>
+
     </>  
   
     

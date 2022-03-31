@@ -4,7 +4,7 @@ import FormLogin from '../FormLogin/FormLogin';
 import LoginContext from '../../context/LoginContext';
 import { useContext } from 'react';
 
-const Login = (props) => {
+const Login = () => {
   const { setIsLoggedIn, setToken, setUser } = useContext(LoginContext);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -15,6 +15,7 @@ const Login = (props) => {
 
   const handleOk = () => {
     setIsModalVisible(false);
+    
   };
 
   const handleCancel = () => {
@@ -26,14 +27,17 @@ const Login = (props) => {
     setUser(null);
     setToken(null);
     window.localStorage.removeItem('token');
+    window.location.reload(true);
   };
 
   if (
     window.localStorage.getItem('token') &&
     window.localStorage.getItem('token') !== 'null'
   ) {
+    
     return (
       <>
+        
         <Button 
           onClick={LogOut}
           style={{
