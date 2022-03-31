@@ -4,6 +4,7 @@ import './CardsMenu.css';
 import supermanImage from '../../images/superman.png';
 import usuarioImage from '../../images/usuario.webp';
 const { Meta } = Card;
+
 const CardsMenu = () => {
   return (
     <div className="cardContainer">
@@ -20,7 +21,7 @@ const CardsMenu = () => {
       </div>
 
       <div className="menuCard">
-        <a href="http://localhost:3000/users">
+        <a href="http://localhost:3000/funkos">
           <Card
             hoverable
             style={{ width: 240 }}

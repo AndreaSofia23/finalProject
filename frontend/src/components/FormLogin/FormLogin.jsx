@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Form, Input, Button } from 'antd';
 import LoginResult from '../LoginResult/LoginResult';
 import LoginResultInvalid from '../LoginResultInvalid/LoginResultInvalid';
-
+import { useContext } from 'react';
+import LoginContext from '../../context/LoginContext';
 const FormLogin = () => {
+  const { setUser, token, setToken } = useContext(LoginContext);
   const [stateOfLogin, setStateOfLogin] = useState(null);
 
   const restartLogin = () => {
@@ -21,6 +23,10 @@ const FormLogin = () => {
         console.log(response);
         console.log(response.data.mensaje);
         if (response.data.mensaje === 'Autenticación correcta') {
+          console.log(values);
+          setUser(values);
+          console.log(response.data.token);
+          setToken(response.data.token);
           setStateOfLogin('success');
         }
         if (response.data.mensaje === 'Credenciales Invalidas') {
@@ -33,6 +39,9 @@ const FormLogin = () => {
       });
   };
 
+  useEffect(() => {
+    window.localStorage.setItem('token', JSON.stringify(token));
+  }, [token]);
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };

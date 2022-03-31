@@ -4,13 +4,18 @@ import { useContext } from 'react';
 import LoginContext from '../../context/LoginContext';
 
 const LoginResult = (props) => {
-  const { handleLogin } = useContext(LoginContext);
+  const { setIsLoggedIn } = useContext(LoginContext);
   return (
     <Result
       icon={<SmileOutlined />}
       title="Welcome to Funko Pop Web!!"
       extra={
-        <Button onClick={handleLogin} type="primary">
+        <Button
+          onClick={() => {
+            setIsLoggedIn(true);
+          }}
+          type="primary"
+        >
           Continue
         </Button>
       }

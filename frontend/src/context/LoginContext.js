@@ -2,22 +2,19 @@ import { createContext, useState } from 'react';
 
 const LoginContext = createContext();
 
-const initialIsLoggedIn = null;
-
 const IsLoggedInProvider = ({ children }) => {
-  const [isLoggedIn, setIsLoggedIn] = useState(initialIsLoggedIn);
+  const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(null);
 
-  /* const [stateOfLogin, setStateOfLogin] = useState(0); */
-
-  const handleLogin = (e) => {
-    if (isLoggedIn) {
-      setIsLoggedIn(null);
-    } else {
-      setIsLoggedIn(true);
-    }
+  const data = {
+    isLoggedIn,
+    user,
+    token,
+    setUser,
+    setToken,
+    setIsLoggedIn,
   };
-
-  const data = { isLoggedIn, handleLogin };
 
   return <LoginContext.Provider value={data}>{children}</LoginContext.Provider>;
 };

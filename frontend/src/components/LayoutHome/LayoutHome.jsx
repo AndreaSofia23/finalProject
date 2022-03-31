@@ -8,6 +8,7 @@ import estilo from './estilo.less';
 import FooterContact from '../FooterContact/FooterContact';
 import FunkosInformation from '../FunkosInformation/FunkosInformation';
 import { IsLoggedInProvider } from '../../context/LoginContext';
+import {ArrowLeftOutlined} from '@ant-design/icons'
 
 const { Header, Content, Footer } = Layout;
 
@@ -27,12 +28,16 @@ const LayoutHome = () => {
             className="headerBar"
             style={{ display: 'flex', justifyContent: 'space-between' }}
           >
-            <img
+            <div>
+            <a href="/"><img
               src={logo}
               width="64px"
               className="logo"
               alt="Logo Funko Pop"
             />
+            </a>
+            <a href="/"><ArrowLeftOutlined /></a>
+            </div>
             <div className="loginModal">
               <Login />
             </div>
@@ -52,7 +57,7 @@ const LayoutHome = () => {
               minHeight: 380,
             }}
           >
-            <FunkosInformation /* isLoggedIn={isLoggedIn} */ />
+            <FunkosInformation />
           </div>
         </Content>
         <Footer
