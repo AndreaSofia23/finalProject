@@ -73,11 +73,18 @@ const Users = () => {
   return (
     <div className="contenedor">
       <h1>Users</h1>
-      <Button type="primary" onClick={showCreator}>
+      <Button 
+        type="primary" 
+        onClick={showCreator} 
+        style={{
+          background: '#22563e',
+          borderColor: '#a7ddc6'
+        }}
+      >
         Create User
       </Button>
       <Modal
-        title="Basic Modal"
+        title="Create User"
         visible={isCreatorVisible}
         onOk={handleOkOfCreator}
         onCancel={handleCancelOfCreator}
@@ -85,7 +92,7 @@ const Users = () => {
         <CrudUsersForm createUser={createUser} />
       </Modal>
       <Modal
-        title="Basic Modal"
+        title="Edit User"
         visible={isEditorVisible}
         onOk={handleOkOfEditor}
         onCancel={handleCancelOfEditor}
@@ -93,7 +100,7 @@ const Users = () => {
         <UserEditorForm editUser={editUser} presetsValues={user} />
       </Modal>
       <Modal
-        title="Basic Modal"
+        title="Information"
         visible={isLectorVisible}
         onOk={handleOkOfLector}
         onCancel={handleCancelOfLector}

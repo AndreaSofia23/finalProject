@@ -4,7 +4,6 @@ import React from 'react';
 import './LayoutHome.css';
 import logo from '../../images/funkoLogo.png';
 import Login from '../Login/Login';
-import estilo from './estilo.less';
 import FooterContact from '../FooterContact/FooterContact';
 import FunkosInformation from '../FunkosInformation/FunkosInformation';
 import { IsLoggedInProvider } from '../../context/LoginContext';
@@ -21,24 +20,27 @@ const LayoutHome = () => {
             position: 'fixed',
             zIndex: 1,
             width: '100%',
+            background:'#68b38f',
           }}
-          className={estilo.customHeader}
         >
           <div
-            className="headerBar"
-            style={{ display: 'flex', justifyContent: 'space-between' }}
+            style={{ 
+              display: 'flex',
+              justifyContent: 'space-between' 
+            }}
           >
             <div>
+            <a href="/"><ArrowLeftOutlined style={{ color: '#22563e' }}/></a>
             <a href="/"><img
               src={logo}
-              width="64px"
+              width="20%"
               className="logo"
               alt="Logo Funko Pop"
             />
             </a>
-            <a href="/"><ArrowLeftOutlined /></a>
+            
             </div>
-            <div className="loginModal">
+            <div >
               <Login />
             </div>
           </div>
@@ -54,7 +56,7 @@ const LayoutHome = () => {
             className="site-layout-background"
             style={{
               padding: 24,
-              minHeight: 380,
+              minHeight: 450,
             }}
           >
             <FunkosInformation />
@@ -63,6 +65,7 @@ const LayoutHome = () => {
         <Footer
           style={{
             textAlign: 'center',
+            background:'#a7ddc6',
           }}
         >
           Contact Us

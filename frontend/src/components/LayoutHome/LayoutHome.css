@@ -8,15 +8,6 @@
 .site-layout .site-layout-background {
   background: #fff;
 }
-.headerBar {
-  display: 'flex';
-  justify-content: 'space-between'  !important;
-
-}
 .logo {
   margin: 0 2em 0 2em;
-}
-.loginModal{
-  text-align: right !important;
-  
 }

@@ -51,17 +51,17 @@ const ListUsers = (props) => {
       render: (record) => {
         return (
           <div>
-            <EditOutlined
+            <EditOutlined style={{ color: '#22563e' }}
               onClick={() => {
                 props.onEditStudent(record);
               }}
             />
-            <DeleteOutlined
+            <DeleteOutlined style={{ color: 'red' }}
               onClick={() => {
                 props.onDeleteUsers(record);
               }}
             />
-            <EyeOutlined
+            <EyeOutlined style={{ color: '#68b38f' }}
               onClick={() => {
                 props.viewUser(record);
               }}
