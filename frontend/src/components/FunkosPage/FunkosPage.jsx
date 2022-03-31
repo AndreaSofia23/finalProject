@@ -46,9 +46,8 @@ useEffect(() => {
       
       
     };
-
-
-   
+    
+       
   
   return(
     <>
@@ -57,7 +56,7 @@ useEffect(() => {
     <div className='cointainerFunkos' style={{justifyContent:'center'}} >
       
       <FunkoList data={funko} />
-      <Modal title="Agregar nuevo Funko" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} >
+      <Modal title="Add a new Funko" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} >
         <Form
           style={{}}
           labelCol={{ span: 4 }}
@@ -67,27 +66,27 @@ useEffect(() => {
           
 
             <Form.Item 
-              label="Nombre"
+              label="Name"
               name= {['funko', 'name']}
               rules={[
                 {
                   required: true,
                 },
               ]}>
-            <Input placeholder='Ingrese el nombre' />
+            <Input placeholder='Insert name' />
             </Form.Item>
             <Form.Item 
-              label="Categoria"
+              label="Category"
               name={['funko', 'category']}
               rules={[
                 {
                   required: true,
                 },
               ]}>
-            <Input placeholder='Ingrese a que categoria pertenece' />
+            <Input placeholder='Insert a category' />
             </Form.Item>
             <Form.Item 
-            label="Ilimitado"
+            label="Exclusive"
             name={['funko', 'ilimited']}
               rules={[
                 {
@@ -95,39 +94,39 @@ useEffect(() => {
                 },
               ]}>
               <Select>
-              <Select.Option value="true">Si</Select.Option>
+              <Select.Option value="true">Yes</Select.Option>
               <Select.Option value="false">No </Select.Option>
             </Select>
             </Form.Item>
               <Form.Item 
-              label="Precio"
+              label="Price"
               name={['funko', 'price']}
               rules={[
                 {
                   required: true,
                 },
               ]}>
-              <Input placeholder='Ingrese el precio '/>
+              <Input placeholder='Insert price '/>
               </Form.Item>
               <Form.Item 
-              label="Imagen"
+              label="Image"
               name={['funko', 'image']}
               rules={[
                 {
                   required: true,
                 },
               ]}>
-              <Input placeholder='Ingrese la url de la imagen' />
+              <Input placeholder='Insert image url' />
               </Form.Item>
               <Form.Item 
-              label="Franquicia"
+              label="Franchisea"
               name={['funko', 'franchise']}
               rules={[
                 {
                   required: true,
                 },
               ]}>
-              <Input placeholder='Ingrese a que franquicia pertenece' />
+              <Input placeholder='Insert franchise' />
               </Form.Item>
               <Button 
                 style={{
@@ -136,20 +135,9 @@ useEffect(() => {
                 }} 
               type='primary'
               htmlType='submit'
-              > Agregar 
+              > Add
               </Button>
-              <Button 
-                style={{
-                  background: '#a7ddc6',
-                  borderColor: '#22563e',
-                  color:'#22563e',
-                }} 
-                type="link" 
-                htmlType="button" 
-                
-              >
-                Limpiar Formulario
-              </Button>
+ 
           </Form>
           
       </Modal>
