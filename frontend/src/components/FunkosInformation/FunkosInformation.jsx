@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import FunkosCarousel from '../FunkosCarousel/FunkosCarousel';
 import './FunkosInformation.css';
 import popLogo from '../../images/popLogo.jpg';

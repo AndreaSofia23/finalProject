@@ -7,16 +7,15 @@ import Login from '../Login/Login';
 import FooterContact from '../FooterContact/FooterContact';
 import FunkosInformation from '../FunkosInformation/FunkosInformation';
 import { IsLoggedInProvider } from '../../context/LoginContext';
-import {ArrowLeftOutlined} from '@ant-design/icons'
-import LoginContext from '../../context/LoginContext';
-import { useContext } from 'react';
-const { Header, Content, Footer } = Layout;
+import { HomeOutlined } from '@ant-design/icons'
+import NavPage from '../NavPage/NavPage';
+const { Header, Content, Footer , } = Layout;
 
 const LayoutHome = () => {
-  const { user } = useContext(LoginContext);
-  useEffect(()=>{
+  useEffect(()=> {
+  
 
-  },[user])
+  })
   return (
     <IsLoggedInProvider>
       <Layout>
@@ -25,7 +24,7 @@ const LayoutHome = () => {
             position: 'fixed',
             zIndex: 1,
             width: '100%',
-            background:'#68b38f',
+            background:'#68b38f'
           }}
         >
           <div
@@ -34,17 +33,28 @@ const LayoutHome = () => {
               justifyContent: 'space-between' 
             }}
           >
-            <div>
-            <a href="/"><ArrowLeftOutlined style={{ color: '#22563e' }}/></a>
+            <div style={{
+            }}>
             <a href="/"><img
               src={logo}
-              width="20%"
+              height="20%"
               className="logo"
               alt="Logo Funko Pop"
+              style={{
+                paddingBottom: '0.5em'
+              }}
             />
             </a>
+            <a style={{
+              color: '#a7ddc6',
+              fontSize: '1.2em',
+              margin: '1em'
+            }}href="/"><HomeOutlined />HOME</a>
+
+            <NavPage/>
             
             </div>
+            
             <div >
               <Login />
             </div>
@@ -64,7 +74,7 @@ const LayoutHome = () => {
               minHeight: 450,
             }}
           >
-            <FunkosInformation  />
+            <FunkosInformation />
           </div>
         </Content>
         <Footer
