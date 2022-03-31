@@ -22,7 +22,6 @@ const LayoutHome = () => {
         <Header
           style={{
             position: 'fixed',
-            zIndex: 1,
             width: '100%',
             background:'#68b38f'
           }}
@@ -33,8 +32,7 @@ const LayoutHome = () => {
               justifyContent: 'space-between' 
             }}
           >
-            <div style={{
-            }}>
+            <div>
             <a href="/"><img
               src={logo}
               height="20%"
@@ -43,7 +41,7 @@ const LayoutHome = () => {
               style={{
                 paddingBottom: '0.5em'
               }}
-            />
+              />
             </a>
             <a style={{
               color: '#a7ddc6',

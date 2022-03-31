@@ -53,7 +53,7 @@ const ListUsers = (props) => {
           <div>
             <EditOutlined style={{ color: '#22563e' }}
               onClick={() => {
-                props.onEditStudent(record);
+                props.onEditUser(record);
               }}
             />
             <DeleteOutlined style={{ color: 'red' }}

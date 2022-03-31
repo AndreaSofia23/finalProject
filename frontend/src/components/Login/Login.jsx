@@ -20,6 +20,8 @@ const Login = () => {
 
   const handleCancel = () => {
     setIsModalVisible(false);
+    window.location.reload(true);
+
   };
 
   const LogOut = () => {

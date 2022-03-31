@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Modal, Button } from 'antd';
 import CrudUsersForm from '../CrudUsersForm/CrudUsersForm';
-import UserEditorForm from '../UserEditorForm/UserEditorForm';
+import CrudUserEditor from '../CrudUserEditor/CrudUserEditor';
 import CrudUsersTable from '../CrudUsersTable/CrudUsersTable';
 import CrudUsersVisor from '../CrudUsersVisor/CrudUsersVisor';
 import { CrudUsersHandlers } from '../../handlers/CrudUsersHandlers';
@@ -30,6 +30,8 @@ const Users = () => {
     console.log(values);
     const resp = await axios.post('http://localhost:8080/api/users', values);
     console.log(resp);
+    window.location.reload(true);
+
   };
 
   const editUser = async (values) => {
@@ -48,7 +50,7 @@ const Users = () => {
 
   const onDeleteUsers = (record) => {
     Modal.confirm({
-      title: 'Are you sure, you want to delete this student record?',
+      title: 'Are you sure, you want to delete this user record?',
       okText: 'Yes',
       okType: 'danger',
       onOk: async () => {
@@ -60,7 +62,7 @@ const Users = () => {
     });
   };
 
-  const onEditStudent = (record) => {
+  const onEditUser = (record) => {
     setUser(record);
     showEditor();
   };
@@ -97,7 +99,7 @@ const Users = () => {
         onOk={handleOkOfEditor}
         onCancel={handleCancelOfEditor}
       >
-        <UserEditorForm editUser={editUser} presetsValues={user} />
+        <CrudUserEditor editUser={editUser} presetsValues={user} />
       </Modal>
       <Modal
         title="Information"
@@ -108,7 +110,7 @@ const Users = () => {
         <CrudUsersVisor user={user} />
       </Modal>
       <CrudUsersTable
-        onEditStudent={onEditStudent}
+        onEditUser={onEditUser}
         onDeleteUsers={onDeleteUsers}
         viewUser={viewUser}
       />
