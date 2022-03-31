@@ -26,7 +26,7 @@ const FormLogin = () => {
           console.log(values);
           setUser(values);
           console.log(response.data.token);
-          setToken(response.data.token);
+          setToken('Bearer ' + response.data.token);
           setStateOfLogin('success');
         }
         if (response.data.mensaje === 'Credenciales Invalidas') {
