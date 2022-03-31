@@ -30,8 +30,6 @@ const Users = () => {
     console.log(values);
     const resp = await axios.post('http://localhost:8080/api/users', values);
     console.log(resp);
-    window.location.reload(true);
-
   };
 
   const editUser = async (values) => {

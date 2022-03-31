@@ -2,33 +2,33 @@ import React from 'react';
 import { Form, Input, Button } from 'antd';
 
 const UserEditorForm = (props) => {
-  const { presetsValues } = props;
+/*   const { presetsValues } = props;
   presetsValues.password= '';
   console.log(presetsValues);
   console.log(presetsValues.userName);
-  
+ */
   const onFinish = (values) => {
     props.editUser(values);
   };
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
-
   };
 
   return (
     <Form
-      name="Create User"
+      name="Edit User"
       labelCol={{
         span: 8,
       }}
       wrapperCol={{
         span: 16,
       }}
-      initialValues={presetsValues}
+      /* initialValues={presetsValues} */
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
+      
     >
       <Form.Item
         label="First Name"

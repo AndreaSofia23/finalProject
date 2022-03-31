@@ -3,7 +3,7 @@ import { Card } from 'antd';
 import { Input } from 'antd';
 
 const UserReader = (props) => {
-  console.log(props.user);
+  /* console.log(props.user); */
   return (
     <>
       <Card title="User" style={{ width: 300 }}>
