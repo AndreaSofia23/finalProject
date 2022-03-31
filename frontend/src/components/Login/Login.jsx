@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Modal, Button } from 'antd';
 import './Login.css';
 import FormLogin from '../FormLogin/FormLogin';
@@ -6,7 +6,7 @@ import LoginContext from '../../context/LoginContext';
 import { useContext } from 'react';
 
 const Login = (props) => {
-  const { isLoggedIn, handleLogin } = useContext(LoginContext);
+  const { setIsLoggedIn, setToken, setUser } = useContext(LoginContext);
 
   const [isModalVisible, setIsModalVisible] = useState(false);
 
@@ -22,8 +22,22 @@ const Login = (props) => {
     setIsModalVisible(false);
   };
 
-  if (isLoggedIn) {
-    return <Button onClick={handleLogin}>Logout</Button>;
+  const LogOut = () => {
+    setIsLoggedIn(null);
+    setUser(null);
+    setToken(null);
+    window.localStorage.removeItem('token');
+  };
+
+  if (
+    window.localStorage.getItem('token') &&
+    window.localStorage.getItem('token') !== 'null'
+  ) {
+    return (
+      <>
+        <Button onClick={LogOut}>Logout</Button>
+      </>
+    );
   } else {
     return (
       <>
