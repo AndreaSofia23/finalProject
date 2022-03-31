@@ -61,10 +61,11 @@ useEffect(() => {
   return(
     <div className='cointainerFunkos' >
       
-      <Button type='primary' style={{backgroundColor:'#819f5f',border:'#819f5f'}} onClick={()=>showModal()}>Agregar nuevo Funko</Button>
+      <Button type='primary' style={{background: '#22563e',borderColor: '#a7ddc6'}} onClick={()=>showModal()}>Agregar nuevo Funko</Button>
       <FunkoList data={funko} />
       <Modal title="Agregar nuevo Funko" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} >
         <Form
+          style={{}}
           labelCol={{ span: 4 }}
           wrapperCol={{ span: 14 }}
           layout="horizontal"
@@ -125,11 +126,24 @@ useEffect(() => {
               <Input placeholder='Ingrese a que franquicia pertenece' />
               </Form.Item>
               <Button 
+                style={{
+                  background: '#22563e',
+                  borderColor: '#a7ddc6'
+                }} 
               type='primary'
               htmlType='submit'
               > Agregar 
               </Button>
-              <Button type="link" htmlType="button" onClick={onFill}>
+              <Button 
+                style={{
+                  background: '#a7ddc6',
+                  borderColor: '#22563e',
+                  color:'#22563e',
+                }} 
+                type="link" 
+                htmlType="button" 
+                onClick={onFill}
+              >
                 Limpiar Formulario
               </Button>
           </Form>

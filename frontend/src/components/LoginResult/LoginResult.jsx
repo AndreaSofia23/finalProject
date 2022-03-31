@@ -7,10 +7,14 @@ const LoginResult = (props) => {
   const { setIsLoggedIn } = useContext(LoginContext);
   return (
     <Result
-      icon={<SmileOutlined />}
+      icon={<SmileOutlined  style={{ color: '#68b38f' }}/>}
       title="Welcome to Funko Pop Web!!"
       extra={
-        <Button
+        <Button 
+          style={{
+            background: '#22563e',
+            borderColor: '#a7ddc6',
+          }}
           onClick={() => {
             setIsLoggedIn(true);
           }}
