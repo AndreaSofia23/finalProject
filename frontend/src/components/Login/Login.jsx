@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Modal, Button } from 'antd';
-import './Login.css';
 import FormLogin from '../FormLogin/FormLogin';
 import LoginContext from '../../context/LoginContext';
 import { useContext } from 'react';
@@ -35,16 +34,24 @@ const Login = (props) => {
   ) {
     return (
       <>
-        <Button onClick={LogOut}>Logout</Button>
+        <Button 
+          onClick={LogOut}
+          style={{
+            background: '#a7ddc6',
+            borderColor: '#22563e',
+          }}
+        >
+          Logout
+        </Button>
       </>
     );
   } else {
     return (
       <>
-        <Button type="primary" onClick={showModal}>
+        <Button type="primary" onClick={showModal} style={{background: '#22563e',borderColor: '#a7ddc6'}}>
           Login
         </Button>
-        <Modal
+        <Modal 
           visible={isModalVisible}
           title="Login"
           onOk={handleOk}

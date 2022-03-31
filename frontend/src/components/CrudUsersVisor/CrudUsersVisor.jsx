@@ -6,7 +6,7 @@ const UserReader = (props) => {
   console.log(props.user);
   return (
     <>
-      <Card title="Default size card" style={{ width: 300 }}>
+      <Card title="User" style={{ width: 300 }}>
         <Input readOnly value={props.user.firstName} />
         <Input readOnly value={props.user.lastName} />
         <Input readOnly value={props.user.userName} />

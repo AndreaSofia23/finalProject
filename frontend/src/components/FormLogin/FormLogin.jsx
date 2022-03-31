@@ -93,7 +93,7 @@ const FormLogin = () => {
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" style={{background: '#22563e',borderColor: '#a7ddc6'}}>
             Submit
           </Button>
         </Form.Item>

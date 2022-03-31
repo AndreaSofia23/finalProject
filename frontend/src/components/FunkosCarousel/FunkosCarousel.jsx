@@ -4,8 +4,11 @@ import harryPotterImage from '../../images/HarryPotter_Harry_POP.webp';
 import lokisImage from '../../images/Lokis.jpg'
 import lucaImage from '../../images/luca-funko.jpg'
 import freddieImage from '../../images/freddieMercury.jpg'
-import thor from '../../images/thor.png'
-import spiderMan from '../../images/spiderMan.webp'
+import thorImage from '../../images/thor.png'
+import spiderManImage from '../../images/spiderMan.webp'
+import dobbyImage from '../../images/dobby.webp'
+import jonnyImage from '../../images/JohnyBravo.webp'
+import harryBoxImage from '../../images/HarryPotterBox.webp'
 
 
 const FunkosCarousel = () =>{
@@ -20,13 +23,22 @@ const FunkosCarousel = () =>{
       <img src={lokisImage} width ="90%"alt='lokis'/>
       </div>
       <div>
-      <img src={freddieImage} width ="90%"alt='luca'/>
+      <img src={freddieImage} width ="90%"alt='FreddieMercury'/>
       </div>
       <div>
-      <img src={thor} width ="90%"alt='luca'/>
+      <img src={thorImage} width ="90%"alt='Thor'/>
       </div>
       <div>
-      <img src={spiderMan} width ="90%"alt='luca'/>
+      <img src={dobbyImage} width ="90%"alt='dobby'/>
+      </div>
+      <div>
+      <img src={spiderManImage} width ="90%"alt='spiderMan'/>
+      </div>
+      <div>
+      <img src={harryBoxImage} width ="90%"alt='harryPotterBox'/>
+      </div>
+      <div>
+      <img src={jonnyImage} width ="90%"alt='JohnyBravo'/>
       </div>
       <div>
         <h3 ><img src={lucaImage} width ="90%"alt='luca'/>.</h3>
